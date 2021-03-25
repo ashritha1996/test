@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.spring.test.TestApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.204 s <<< FAILURE! - in com.spring.test.TestApplicationTests
+contextLoads  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'controllerClass': Unsatisfied dependency expressed through field 'topicService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'topicService': Unsatisfied dependency expressed through field 'topicRepo'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.spring.test.db.topicRepo' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'topicService': Unsatisfied dependency expressed through field 'topicRepo'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.spring.test.db.topicRepo' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.spring.test.db.topicRepo' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+

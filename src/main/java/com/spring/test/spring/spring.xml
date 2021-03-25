@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context = "http://www.springframework.org/schema/context"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+<!--global init and destroy for all beans-->
+<!--<beans default-init-method="init" default-destroy-method="destroy">-->
+<!--    this is for bean definition inheritance & manual bean initialization & destruction -
+        init-method="init" destroy-method="destroy"-->
+
+<!--    <bean id="parent" class="com.spring.test.spring.Triangle">-->
+<!--        <property name="pointA" ref="pointA"/>-->
+<!--        this is for merging bean definitions with the parent-->
+<!--        <property name="points">-->
+<!--            <list merge="true">-->
+<!--                <ref bean="pointB"/>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    <bean id="triangle1" class="com.spring.test.spring.Triangle" parent="parent">-->
+<!--        <property name="pointB" ref="pointB"/>-->
+<!--        <property name="pointC" ref="pointC"/>-->
+<!--    </bean>-->
+<!--    <bean id="triangle2" class="com.spring.test.spring.Triangle" parent="parent">-->
+<!--        <property name="pointB" ref="pointB"/>-->
+<!--    </bean>-->
+
+<!--    autowire = "byName" - for bean autowriring, scope = "prototype/singleton", for bean scopes-->
+<!--    <bean id="triangle" class="com.spring.test.spring.Triangle" autowire="byName">-->
+        <!--        <property name="type" value="Equilateral"/>  this is for passing using setter-->
+        <!--        <constructor-arg value="Equilateral"/> this is for single arg constructor-->
+        <!-- This is for multi argument constructor-->
+        <!--        <constructor-arg value="Equilateral"/>-->
+        <!--        <constructor-arg value="20"/>-->
+        <!-- If two single argument constructors are present, add type to specify spring which one to call-->
+        <!--        <constructor-arg type="int" value="20"/>-->
+        <!-- This is for multi argument constructor to resolve based on order of elements-->
+        <!--                <constructor-arg index="0" value="Equilateral"/>-->
+        <!--                <constructor-arg index="1" value="20"/>-->
+
+        <!-- for point example -->
+<!--        <property name="pointA" ref="zeroPoint"/>-->
+<!--        <property name="pointB" ref="onePoint"/>-->
+<!--        <property name="pointC" ref="twoPoint"/>-->
+
+        <!-- for inner bean point example -->
+<!--        <property name="pointA" ref="zeroPoint"/>-->
+        <!-- inner bean declared here - used only within triangle class, no ref & id required -->
+<!--        <property name="pointB" >-->
+<!--            <bean class="com.spring.test.spring.Point">-->
+<!--                <property name="x" value="1"/>-->
+<!--                <property name="y" value="0"/>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--        <property name="pointC">-->
+<!--            <bean class="com.spring.test.spring.Point">-->
+<!--                <property name="x" value="0"/>-->
+<!--                <property name="y" value="1"/>-->
+<!--            </bean>-->
+<!--        </property>-->
+
+        <!-- for idref point example, idref issue in this version -->
+<!--        <property name="pointA" >-->
+<!--            <idref bean="zeroPoint"/>-->
+<!--        </property>-->
+<!--        <property name="pointB" >-->
+<!--            <bean class="com.spring.test.spring.Point">-->
+<!--                <property name="x" value="1"/>-->
+<!--                <property name="y" value="0"/>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--        <property name="pointC">-->
+<!--            <bean class="com.spring.test.spring.Point">-->
+<!--                <property name="x" value="0"/>-->
+<!--                <property name="y" value="1"/>-->
+<!--            </bean>-->
+<!--        </property>-->
+
+        <!-- for collections-list -->
+<!--                <property name="pointList">-->
+<!--                    <list>-->
+<!--                        <ref bean="zeroPoint"/>-->
+<!--                        <ref bean="onePoint"/>-->
+<!--                        <ref bean="twoPoint"/>-->
+<!--                    </list>-->
+<!--                </property>-->
+<!--    </bean>-->
+    <!-- using aliases -->
+<!--    <alias name="triangle" alias="tri"/>-->
+
+    <!-- for point example -->
+<!--    <bean id="zeroPoint" class="com.spring.test.spring.Point">-->
+<!--        <property name="x" value="0"/>-->
+<!--        <property name="y" value="0"/>-->
+<!--    </bean>-->
+<!--    <bean id="onePoint" class="com.spring.test.spring.Point">-->
+<!--        <property name="x" value="1"/>-->
+<!--        <property name="y" value="0"/>-->
+<!--    </bean>-->
+<!--    <bean id="twoPoint" class="com.spring.test.spring.Point">-->
+<!--        <property name="x" value="0"/>-->
+<!--        <property name="y" value="1"/>-->
+<!--    </bean>-->
+
+    <!-- for innerbean point example -->
+<!--    <bean id="zeroPoint" class="com.spring.test.spring.Point">-->
+<!--        <property name="x" value="0"/>-->
+<!--        <property name="y" value="0"/>-->
+<!--    </bean>-->
+
+    <!-- for idref point example , idref issue in this version-->
+<!--    <bean id="zeroPoint" class="com.spring.test.spring.Point">-->
+<!--        <property name="x" value="0"/>-->
+<!--        <property name="y" value="0"/>-->
+<!--    </bean>-->
+
+    <!-- for collections-list example -->
+<!--        <bean id="zeroPoint" class="com.spring.test.spring.Point">-->
+<!--            <property name="x" value="0"/>-->
+<!--            <property name="y" value="0"/>-->
+<!--        </bean>-->
+<!--        <bean id="onePoint" class="com.spring.test.spring.Point">-->
+<!--            <property name="x" value="1"/>-->
+<!--            <property name="y" value="0"/>-->
+<!--        </bean>-->
+<!--        <bean id="twoPoint" class="com.spring.test.spring.Point">-->
+<!--            <property name="x" value="0"/>-->
+<!--            <property name="y" value="1"/>-->
+<!--        </bean>-->
+
+        <!--this is for bean autowriring & bean def. inheritance, name is same as that of instance name in the class, then add autowire in bean triangle-->
+<!--    <bean id="pointA" class="com.spring.test.spring.Point">-->
+<!--        <property name="x" value="0"/>-->
+<!--        <property name="y" value="0"/>-->
+<!--    </bean>-->
+<!--    <bean id="pointB" class="com.spring.test.spring.Point">-->
+<!--        <property name="x" value="1"/>-->
+<!--        <property name="y" value="0"/>-->
+<!--    </bean>-->
+<!--    <bean id="pointC" class="com.spring.test.spring.Point">-->
+<!--        <property name="x" value="0"/>-->
+<!--        <property name="y" value="1"/>-->
+<!--    </bean>-->
+
+<!--    this is for bean place holder-->
+<!--    <bean id="triangle" class="com.spring.test.spring.Triangle" autowire="byName">-->
+<!--        <property name="pointA" ref="pointA"/>-->
+<!--        <property name="pointB" ref="pointB"/>-->
+<!--        <property name="pointC" ref="pointC"/>-->
+<!--    </bean>-->
+<!--    this is for bean post processor-->
+<!--    <bean class ="com.spring.test.spring.beanPostProcessor"/>-->
+<!--    This is for bean factory post processor-->
+    <bean class="com.spring.test.spring.beanFactoryPostProcessor"/>
+<!--this is for placeholders - reading from properties file-->
+<!--    <bean id="pointA" class="com.spring.test.spring.Point">-->
+
+<!--&lt;!&ndash;        <qualifier value="circleRelated" ></qualifier> - error in importing related xml&ndash;&gt;-->
+<!--        <property name="x" value="${pointA.pointX}"/>-->
+<!--        <property name="y" value="${pointA.pointY}"/>-->
+<!--    </bean>-->
+<!--    <bean id="pointB" class="com.spring.test.spring.Point">-->
+<!--        <property name="x" value="1"/>-->
+<!--        <property name="y" value="0"/>-->
+<!--    </bean>-->
+    <bean id="pointC" class="com.spring.test.spring.Point">
+        <property name="x" value="0"/>
+        <property name="y" value="1"/>
+    </bean>
+
+    <bean id = "propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="file:src/main/java/com/spring/test/spring/config.properties"/>
+    </bean>
+
+<!--    This is for shape interfaces, can comment while adding annotation method on the class-->
+<!--    <bean id="circle" class="com.spring.test.spring.Circle" >-->
+<!--&lt;!&ndash;        <property name="Centre" ref="pointA"/>&ndash;&gt;-->
+<!--    </bean>-->
+
+<!--    this is for required annotation-->
+
+<!--    <bean id = "RequiredAnnotationBeanPostProcessor" class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>-->
+
+<!--This is for autowire annotation-->
+<!--        <bean id = "AutowiredAnnotationBeanPostProcessor" class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
+<!--shortcut for all annotations - this works if that xml config is imported-->
+    <context:annotation-config/>
+
+    <!--shortcut for component tag - this works if that xml config is imported-->
+    <context:component-scan base-package="com.spring.test.spring"/>
+
+<!--    For getting messages from property file-->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+            <property name="basename" value="file:src/main/java/com/spring/test/spring/msg.properties" />
+            <property name="useCodeAsDefaultMessage" value="true" />
+    </bean>
+
+</beans>

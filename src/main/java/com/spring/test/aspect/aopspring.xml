@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+<!--    to tell spring that there are aspect classes-->
+    <aop:aspectj-autoproxy/>
+
+    <bean id="circle" class="com.spring.test.aspect.model.Circle">
+<!--        comment this property to test after returning advise method - throws in setname block-->
+        <property name="name" value="Circle Name"/>
+    </bean>
+
+    <bean id="triangle" class="com.spring.test.aspect.model.Triangle">
+        <property name="name" value="Triangle Name"/>
+    </bean>
+
+    <bean id="shapeService" class="com.spring.test.aspect.ShapeService" autowire="byName"/>
+
+<!--    this is the bean config for aspect class /  can use @Component on the class-->
+    <bean name="loggingAspect" class="com.spring.test.aspect.logger"/>
+<!--    this is for configuring without annotations-->
+<!--    <aop:config>-->
+<!--        <aop:aspect id ="loggingAspect" ref="loggingAspect">-->
+<!--            <aop:pointcut id="allGetters" expression=""/>-->
+<!--            <aop:around pointcut-ref="allGetters" method="secondAdvise"/>-->
+<!--&lt;!&ndash;            direct method inline - without two method definitions&ndash;&gt;-->
+<!--&lt;!&ndash;            <aop:around pointcut="execution(* get*())" method="secondAdvise"/>&ndash;&gt;-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+</beans>
